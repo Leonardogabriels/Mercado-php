@@ -22,8 +22,11 @@
                 </tr>
                 <?php endforeach ?>
         </table>
-
+                
         <?php if($this->session->userdata("usuario_logado")):?>
+
+            <?= anchor("produtos/formulario","Novo produto",array("class"=> "btn btn-primary"))?>
+        
             <?= anchor("login/logout","logout",array("class"=> "btn btn-primary"))?>
         <?php else:?>   
             

@@ -22,7 +22,7 @@ class Login extends CI_Controller{
         public function logout(){
             $this->session->unset_userdata("usuario_logado"); 
             $this->load->view("login/logout");
-            $this->session->set_flashdata("danger", "deslogado com sucesso");
+            $this->session->set_flashdata("success", "deslogado com sucesso");
 
             redirect('/');
         }
