@@ -8,16 +8,20 @@
 </head>
 <body>
     <div>
+    <?php if ($this->session->flashdata("success")) : ?>
+       <p class="alert alert-success"> <?= $this->session->flashdata("success"); ?></p>
+        <?php endif ?>
 
-       <p class="alert-success"> <?= $this->session->flashdata("success"); ?></p>
-
-       <p class="alert-danger"> <?= $this->session->flashdata("danger"); ?></p>
+       <?php if ($this->session->flashdata("danger")) : ?>
+       <p class="alert alert-danger"> <?= $this->session->flashdata("danger"); ?></p>
+        <?php endif ?>
 
         <h1>Produtos</h1>
         <table class="table">
             <?php foreach($produtos as $produto):?>
                 <tr>
-                    <td><?= $produto["nome"]?></td>
+                    <td><?= anchor("produtos/mostra?id={$produto['id']}", $produto["nome"])?></td>
+                    
                     <td><?=numeroEmReais($produto["preco"])?></td>
                 </tr>
                 <?php endforeach ?>
