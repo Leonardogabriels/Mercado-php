@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); // garantir que 
 
 class Vendas extends CI_Controller{
     public function nova(){
-        $usuario = $this->session->userdata("usuario_logado");
+       $usuario = autoriza();
 
        $this->load->model('vendas_model');
        $vendas = array(
@@ -16,7 +16,7 @@ class Vendas extends CI_Controller{
        redirect("/");
     }
     public function index(){
-        $usuario = $this->session->userdata("usuario_logado");
+        $usuario =autoriza();
         $this->load->model("produtos_model");
         $produtosVendidos = $this->produtos_model->buscarVendidos($usuario);
         $dados = array("produtosVendidos"=> $produtosVendidos);

@@ -11,10 +11,12 @@ class Produtos extends CI_Controller{
         $this->load->view("produtos/index.php", $dados);
     }
     public function formulario(){
-        $this->load->view("produtos/formulario");
-     
+        autoriza();
+        $this->load->view("produtos/formulario"); 
     }
     public function novo(){
+        autoriza();
+        
         $this->load->library("form_validation");//biblioteca de validação
         $this->form_validation->set_rules("nome", "Nome", "required|min_length[5]|callback_nao_tenha_a_palavra_melhor"); //regra de validação
         $this->form_validation->set_rules("descricao","descricao","trim|required|min_length[10]");
