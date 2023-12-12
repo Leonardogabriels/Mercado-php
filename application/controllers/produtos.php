@@ -8,11 +8,14 @@ class Produtos extends CI_Controller{
 
         $dados = array("produtos" =>$produtos);
         $this->load->helper(array("url","currency"));
-        $this->load->view("produtos/index.php", $dados);
+        $this->load->template("produtos/index.php", $dados);
+        
+
     }
     public function formulario(){
         autoriza();
-        $this->load->view("produtos/formulario"); 
+        $this->load->template("produtos/formulario");
+
     }
     public function novo(){
         autoriza();
@@ -43,12 +46,15 @@ class Produtos extends CI_Controller{
         }
     }
     public function mostra($id){
+
         $this->load->model("produtos_model");
         $produto = $this->produtos_model->busca($id);
         $dados = array("produto" => $produto);
         $this->load->helper("typography");
-        $this->load->view("produtos/mostra", $dados);
+        $this->load->template("produtos/mostra", $dados);
+
     }
+
     public function nao_tenha_a_palavra_melhor($nome){
         $posicao = strpos($nome,"melhor");
         if($posicao != true){
